@@ -1,5 +1,6 @@
 """Define the heos source module."""
 from typing import Dict, Optional, Sequence  # pylint: disable=unused-import
+from urllib.parse import unquote
 
 from . import const
 
@@ -58,7 +59,7 @@ class HeosSource:
             self._from_data(data)
 
     def _from_data(self, data: dict):
-        self._name = data["name"]
+        self._name = unquote(data["name"])
         self._image_url = data["image_url"]
         self._type = data["type"]
 
